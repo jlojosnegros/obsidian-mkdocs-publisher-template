@@ -6,45 +6,45 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A cool description" name="description"/>
-<link href="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/Kubernetes%20scheduler%20Pod%20Priority%20and%20Preemption/" rel="canonical"/>
-<link href="../../../../assets/meta/favicons.png" rel="icon"/>
+<link href="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/priorityclass/Kubernetes%20PriorityClass/" rel="canonical"/>
+<link href="../../../../../assets/meta/favicons.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.7" name="generator"/>
-<title>Kubernetes Pod Priority and Preemption - your_site_name</title>
-<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
-<link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<title>PriorityClass - your_site_name</title>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-<link href="../../../../assets/css/template/blog.css" rel="stylesheet"/>
-<link href="../../../../assets/css/template/grid.css" rel="stylesheet"/>
-<link href="../../../../assets/css/template/img-grids-float.css" rel="stylesheet"/>
-<link href="../../../../assets/css/template/tooltipster.bundle.min.css" rel="stylesheet"/>
-<link href="../../../../assets/css/template/utils.css" rel="stylesheet"/>
-<link href="../../../../assets/css/admonition.css" rel="stylesheet"/>
-<link href="../../../../assets/css/custom_attributes.css" rel="stylesheet"/>
-<link href="../../../../assets/css/customization.css" rel="stylesheet"/>
-<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../../../assets/css/template/blog.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/template/grid.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/template/img-grids-float.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/template/tooltipster.bundle.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/template/utils.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/admonition.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/custom_attributes.css" rel="stylesheet"/>
+<link href="../../../../../assets/css/customization.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-<link href="https://unpkg.com/tippy.js@6/animations/scale-subtle.css" rel="stylesheet"/>
-<link href="https://unpkg.com/tippy.js@6/themes/translucent.css" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<meta content="Kubernetes Pod Priority and Preemption" property="og:title"/>
-<meta content="Kubernetes Pod Priority and Preemption" name="twitter:title"/>
+<link href="https://unpkg.com/tippy.js@6/animations/scale-subtle.css" rel="stylesheet">
+<link href="https://unpkg.com/tippy.js@6/themes/translucent.css" rel="stylesheet">
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet">
+<meta content="PriorityClass" property="og:title"/>
+<meta content="PriorityClass" name="twitter:title"/>
 <meta content="A cool description" name="og:description"/>
 <meta content="A cool description" name="twitter:description"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/assets/meta/SEO.png" property="og:image"/>
 <meta content="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/assets/meta/SEO.png" name="twitter:image"/>
-</head>
+</link></link></link></head>
 <body data-md-color-accent="light-blue" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#pod-priority-and-preemption">
+<a class="md-skip" href="#priorityclass">
           Skip to content
         </a>
 </div>
@@ -52,8 +52,8 @@
 </div>
 <header class="md-header md-header--lifted" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="your_site_name" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="your_site_name">
-<img alt="logo" src="../../../../assets/meta/favicons.png"/>
+<a aria-label="your_site_name" class="md-header__button md-logo" data-md-component="logo" href="../../../../.." title="your_site_name">
+<img alt="logo" src="../../../../../assets/meta/favicons.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
@@ -68,7 +68,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Kubernetes Pod Priority and Preemption
+              PriorityClass
             
           </span>
 </div>
@@ -120,12 +120,12 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../../_draft/Git%20worktrees/">
+<a class="md-tabs__link" href="../../../../../_draft/Git%20worktrees/">
          draft
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../../architecture/k8s/">
+<a class="md-tabs__link md-tabs__link--active" href="../../../architecture/k8s/">
         Pages
       </a>
 </li>
@@ -141,8 +141,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="your_site_name" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="your_site_name">
-<img alt="logo" src="../../../../assets/meta/favicons.png"/>
+<a aria-label="your_site_name" class="md-nav__button md-logo" data-md-component="logo" href="../../../../.." title="your_site_name">
+<img alt="logo" src="../../../../../assets/meta/favicons.png"/>
 </a>
     your_site_name
   </label>
@@ -160,7 +160,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../../_draft/Git%20worktrees/">
+<a class="md-nav__link" href="../../../../../_draft/Git%20worktrees/">
         Switching Development Contexts with Git
       </a>
 </li>
@@ -204,7 +204,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../architecture/k8s/">
+<a class="md-nav__link" href="../../../architecture/k8s/">
         Arquitectura de Kubernetes
       </a>
 </li>
@@ -223,69 +223,18 @@
           Scheduler
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Kubernetes Pod Priority and Preemption
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes%20scheduler%20Pod%20Priority%20and%20Preemption/">
         Kubernetes Pod Priority and Preemption
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pod-priority-and-preemption">
-    Pod Priority and Preemption
-  </a>
-<nav aria-label="Pod Priority and Preemption" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kubernetes-scheduling-preemption">
-    kubernetes scheduling preemption
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#info">
-    Info
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-to-use-it">
-    How to use it.
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#workflow">
-    Workflow
-  </a>
-<nav aria-label="Workflow" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#preemption">
-    Preemption
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../k8s%20scheduling%20framework/">
+<a class="md-nav__link" href="../../k8s%20scheduling%20framework/">
         Kubernetes Scheduling Framework
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_1_2_3" id="__nav_2_1_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2_3" id="__nav_2_1_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_1_2_3">
           Priorityclass
           <span class="md-nav__icon md-icon"></span>
@@ -296,10 +245,37 @@
           Priorityclass
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../priorityclass/Kubernetes%20PriorityClass/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          PriorityClass
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         PriorityClass
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#priorityclass">
+    PriorityClass
+  </a>
+<nav aria-label="PriorityClass" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-scheduling">
+    kubernetes scheduling
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -328,39 +304,15 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#pod-priority-and-preemption">
-    Pod Priority and Preemption
+<a class="md-nav__link" href="#priorityclass">
+    PriorityClass
   </a>
-<nav aria-label="Pod Priority and Preemption" class="md-nav">
+<nav aria-label="PriorityClass" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#kubernetes-scheduling-preemption">
-    kubernetes scheduling preemption
+<a class="md-nav__link" href="#kubernetes-scheduling">
+    kubernetes scheduling
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#info">
-    Info
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#how-to-use-it">
-    How to use it.
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#workflow">
-    Workflow
-  </a>
-<nav aria-label="Workflow" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#preemption">
-    Preemption
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -372,27 +324,9 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Kubernetes Pod Priority and Preemption</h1>
-<h2 id="pod-priority-and-preemption">Pod Priority and Preemption<a class="headerlink" href="#pod-priority-and-preemption" title="Permanent link">¶</a></h2>
-<h4 id="kubernetes-scheduling-preemption">kubernetes scheduling preemption<a class="headerlink" href="#kubernetes-scheduling-preemption" title="Permanent link">¶</a></h4>
-<p>Links:</p>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/">main</a></li>
-</ul>
-<h3 id="info">Info<a class="headerlink" href="#info" title="Permanent link">¶</a></h3>
-<div class="admonition info">
-<p class="admonition-title"><strong>FEATURE STATE:</strong> <code>Kubernetes v1.14 [stable]</code></p>
-</div>
-<p>Los <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a> tienen una prioridad.<br/>
-Esta prioridad indica la <em>importancia relativa que tiene un pod con respecto a los demás</em><br/>
-Si un <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a> no puede ser asignado a un nodo el <a href="../../../Kubernetes%20Scheduler" title="scheduler">scheduler</a> intenta eliminar (evict) pods que tengan menos prioridad para poder asignar el pod.</p>
-<h3 id="how-to-use-it">How to use it.<a class="headerlink" href="#how-to-use-it" title="Permanent link">¶</a></h3>
-<ol>
-<li>Crear una o mas <a href="../priorityclass/Kubernetes%20PriorityClass/" title="Kubernetes PriorityClass">Kubernetes PriorityClass</a></li>
-<li>Crear pods con el campo<code>priorityClassName</code> seteado a alguno de los nombres de alguna de las <a href="../priorityclass/Kubernetes%20PriorityClass/" title="PriorityClass">PriorityClass</a> que hayamos definido. </li>
-</ol>
-<p><div class="citation"> <a class="link_citation" href="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/priorityclass/Kubernetes PriorityClass/"><i class="fas fa-link"></i> </a><h1>PriorityClass</h1>
-<p><strong class="hash" id="kubernetes">kubernetes</strong> <strong class="hash" id="scheduling">scheduling</strong> </p>
+<h1>PriorityClass</h1>
+<h2 id="priorityclass">PriorityClass<a class="headerlink" href="#priorityclass" title="Permanent link">¶</a></h2>
+<h3 id="kubernetes-scheduling">kubernetes scheduling<a class="headerlink" href="#kubernetes-scheduling" title="Permanent link">¶</a></h3>
 <ul>
 <li>Es un objeto <strong>sin namespace</strong> es decir <strong>clusted scoped</strong></li>
 <li>Sirve basicamente para hacer un mapping entre un nombre y un valor de prioridad.</li>
@@ -409,41 +343,15 @@ Si un <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a> no puede ser asign
 </ul>
 <details class="example">
 <summary>PriorityClass</summary>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span><span class="w"></span>
-<span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span><span class="w"></span>
-<span class="nt">globalDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">priority</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XYZ</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">pods</span><span class="nv"> </span><span class="s">only."</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span><span class="w"></span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span><span class="w"></span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span><span class="w"></span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span><span class="w"></span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nt">globalDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">priority</span><span class="nv"> </span><span class="s">class</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">XYZ</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">pods</span><span class="nv"> </span><span class="s">only."</span><span class="w"></span>
 </code></pre></div>
-</details></div></p>
-<p><div class="citation"> <a class="link_citation"><i class="fas fa-link"></i> </a><p style="text-align: center; display: block"><i class="not_found">Kubernetes Non-preempting PriorityClass</i> file not exists</p></div></p>
-<h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h3>
-<p>Cuando un <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a> con <a href="../priorityclass/Kubernetes%20PriorityClass/" title="PriorityClass">PriorityClass</a> entra el <code>priority admission controller</code> busca la clase y popla el campo prioridad con el valor entero.<br/>
-Cuando las prioridades están activadas, <em>la cola de pods esperando scheduling se ordena por prioridad</em> para que los pods con mayor prioridad sean asignados antes.<br/>
-Como existe el <a href="../../../Kubernetes%20scheduler%20back-off" title="Kubernetes scheduler back-off">Kubernetes scheduler back-off</a> todavia es posible que un nodo con menor prioridad pero con menos requisitos de recursos, sea asignado a un nodo antes que otro pod de mayor prioridad pero con unos requisitos de recursos mayores que no se pueden cumplir.</p>
-<h4 id="preemption">Preemption<a class="headerlink" href="#preemption" title="Permanent link">¶</a></h4>
-<p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#preemption">more info</a><br/>
-Los pods pendientes de scheduling se meten en una cola a esperar.<br/>
-El scheduler toma un pod de la cola e intenta asignarlo a un <a href="../../../Kubernetes%20Node" title="Kubernetes Node">Kubernetes Node</a><br/>
-Si ningún nodo satisface los requisitos del <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a> <em>se lanza la logica de preemption para dicho pod</em></p>
-<div class="admonition important">
-<p class="admonition-title">Definicion: Logica de Preemption</p>
-</div>
-<p>Supongamos que el Pod es <code>P</code>.<br/>
-La lógica de preempcion intenta en contrar un Nodo <code>N</code> tal que la eliminación de uno o mas Pods de menor prioridad que <code>P</code> permita que se satisfagan los requisitos de <code>P</code> y pueda ser asignado al nodo <code>N</code><br/>
-Si se encuentra un nodo que cumpla esto los pods de menor prioridad son sacados del nodo para que <em>mas tarde</em> <code>P</code> sea asignado al nodo.</p>
-<p>Cuando se encuentra un nodo <code>N</code> donde eliminando pods de menor prioridad podemos meter a <code>P</code> <em>el nombre del nodo se mete en un campo del pod</em> llamado <code>nominatedNodeName</code>.<br/>
-Esto es así porque el pod <code>P</code> no es asignado a <code>N</code> directamente, si no que se lanza la operacion de eliminacion de los pods de <code>N</code> para hacer sitio a <code>P</code> y esta operación puede tardar un tiempo ( porque los pods pueden tener tiempos de <em>graceful termination</em> por ejemplo), asi que lo que se hace es <em>retrasar la operacion de asignacion de <code>P</code></em>, pero cuando se retoma se tiene en cuenta el valor del campo<code>nominatedNodeName</code> como nodo <strong>preferente</strong></p>
-<div class="admonition caution">
-<p class="admonition-title"><code>P</code> no tiene porque ser asignado <strong>necesariamente</strong> al nodo en <code>nominatedNodeName</code></p>
-</div>
-<p>El scheduler siempre intenta primero el <code>nominatedNodeName</code> antes de iterar por los demas nodos en busca de alguno pero, como la operacion de asignacion de <code>P</code> no se sincroniza con la de eliminación de los otros pods de <code>N</code>, puede pasar que entre medias haya otro nodo que se libere de recursos y donde podamos asignar a <code>P</code><br/>
-Es decir <code>nominatedNodeName</code> y <code>nodeName</code> no tienen porque tener el mismo valor.<br/>
-Tambien puede pasar que, una vez liberado el espacio de <code>N</code> llegue un pod <code>P1</code> con una prioridad mayor que la de <code>P</code> y el scheduler le asigne antes al nodo <code>N</code> ocupando los recursos que en principio se liberaron para <code>P</code>. <br/>
-En este caso el scheduler borra el valor del campo <code>nominatedNodeName</code> de <code>P</code>, <em>esto hace que <code>P</code> pueda ser elegible para lanzar la eliminacion de pods en otro nodo</em> </p>
-<p><a href="../../../Kubernetes%20Preemption%20Evaluator%20and%20Interface" title="Kubernetes Preemption Evaluator and Interface">Kubernetes Preemption Evaluator and Interface</a></p>
+</details>
 <!-- taken from 
 https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-file.html -->
 <hr/>
@@ -531,7 +439,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Arquitectura de Kubernetes" class="md-footer__link md-footer__link--prev" href="../../architecture/k8s/" rel="prev">
+<a aria-label="Previous: Kubernetes Scheduling Framework" class="md-footer__link md-footer__link--prev" href="../../k8s%20scheduling%20framework/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -540,21 +448,8 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
 <span class="md-footer__direction">
                 Previous
               </span>
-              Arquitectura de Kubernetes
-            </div>
-</div>
-</a>
-<a aria-label="Next: Kubernetes Scheduling Framework" class="md-footer__link md-footer__link--next" href="../k8s%20scheduling%20framework/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
               Kubernetes Scheduling Framework
             </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
 </div>
 </a>
 </nav>
@@ -569,12 +464,12 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.8492ddcf.min.js"></script>
-<script src="../../../../assets/js/mathjax.js"></script>
-<script src="../../../../assets/js/utils.js"></script>
+<script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+<script src="../../../../../assets/js/mathjax.js"></script>
+<script src="../../../../../assets/js/utils.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="../../../../assets/js/tooltipster.bundle.js"></script>
+<script src="../../../../../assets/js/tooltipster.bundle.js"></script>
 </body>
 </html>
