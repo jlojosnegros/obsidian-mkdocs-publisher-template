@@ -21,7 +21,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/scheduler-back-off/</loc>
+         <lastmod>2022-11-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/priorityclass/Kubernetes%20PriorityClass/</loc>
+         <lastmod>2022-11-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/priorityclass/non-preempting-priority-class/</loc>
          <lastmod>2022-11-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
