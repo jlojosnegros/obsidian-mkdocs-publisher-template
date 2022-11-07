@@ -1,6 +1,6 @@
 site_name: your_site_name
 site_description: A cool description
-site_url: https://change_me.io/
+site_url: https://jlojosnegros.io/obsidian-mkdocs-publisher-template
 
 theme:
     name: 'material'
