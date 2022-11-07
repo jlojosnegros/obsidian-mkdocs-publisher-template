@@ -1,6 +1,7 @@
 ---
 aliases: ["Non-preempting PriorityClass"]
 share: true
+title: Kubernetes Non-preemptive PriorityClass
 ---
 
 # Non-preemptive PriorityClass
