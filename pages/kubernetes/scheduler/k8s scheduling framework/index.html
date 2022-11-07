@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A cool description" name="description"/>
+<link href="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/k8s%20scheduling%20framework/" rel="canonical"/>
+<link href="../../../../assets/meta/favicons.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.7" name="generator"/>
+<title>Kubernetes Scheduling Framework - your_site_name</title>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<link href="../../../../assets/css/template/blog.css" rel="stylesheet"/>
+<link href="../../../../assets/css/template/grid.css" rel="stylesheet"/>
+<link href="../../../../assets/css/template/img-grids-float.css" rel="stylesheet"/>
+<link href="../../../../assets/css/template/tooltipster.bundle.min.css" rel="stylesheet"/>
+<link href="../../../../assets/css/template/utils.css" rel="stylesheet"/>
+<link href="../../../../assets/css/admonition.css" rel="stylesheet"/>
+<link href="../../../../assets/css/custom_attributes.css" rel="stylesheet"/>
+<link href="../../../../assets/css/customization.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<link href="https://unpkg.com/tippy.js@6/animations/scale-subtle.css" rel="stylesheet">
+<link href="https://unpkg.com/tippy.js@6/themes/translucent.css" rel="stylesheet">
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet">
+<meta content="Kubernetes Scheduling Framework" property="og:title"/>
+<meta content="Kubernetes Scheduling Framework" name="twitter:title"/>
+<meta content="A cool description" name="og:description"/>
+<meta content="A cool description" name="twitter:description"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/assets/meta/SEO.png" property="og:image"/>
+<meta content="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/assets/meta/SEO.png" name="twitter:image"/>
+</link></link></link></head>
+<body data-md-color-accent="light-blue" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#kubernetes-scheduling-framework">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="your_site_name" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="your_site_name">
+<img alt="logo" src="../../../../assets/meta/favicons.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            your_site_name
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Kubernetes Scheduling Framework
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../architecture/k8s/">
+        Pages
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="your_site_name" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="your_site_name">
+<img alt="logo" src="../../../../assets/meta/favicons.png"/>
+</a>
+    your_site_name
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+          Pages
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Pages" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Pages
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" id="__nav_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1_1">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_1">
+<span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_1_1" id="__nav_1_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1_1_1">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Architecture" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_1">
+<span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/k8s/">
+        Arquitectura de Kubernetes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1_2" id="__nav_1_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1_1_2">
+          Scheduler
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scheduler" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_2">
+<span class="md-nav__icon md-icon"></span>
+          Scheduler
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Kubernetes Scheduling Framework
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Kubernetes Scheduling Framework
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-scheduling-framework">
+    Kubernetes Scheduling Framework
+  </a>
+<nav aria-label="Kubernetes Scheduling Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-scheduling">
+    kubernetes scheduling
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#intro">
+    Intro
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workflow">
+    Workflow
+  </a>
+<nav aria-label="Workflow" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scheduling-cycle-binding-cycle">
+    Scheduling Cycle &amp; Binding Cycle.
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extension-points">
+    Extension Points
+  </a>
+<nav aria-label="Extension Points" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scheduling-cycle">
+    Scheduling Cycle
+  </a>
+<nav aria-label="Scheduling Cycle" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#queuesort">
+    QueueSort
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prefilter">
+    PreFilter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filter">
+    Filter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post-filter">
+    Post Filter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-score">
+    Pre Score
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#score">
+    Score
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#normalizescore">
+    NormalizeScore
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reserve">
+    Reserve
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#permit">
+    Permit
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#binding-cycle">
+    Binding Cycle
+  </a>
+<nav aria-label="Binding Cycle" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prebind">
+    PreBind
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bind">
+    Bind
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postbind">
+    PostBind
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#links">
+    Links
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-scheduling-framework">
+    Kubernetes Scheduling Framework
+  </a>
+<nav aria-label="Kubernetes Scheduling Framework" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-scheduling">
+    kubernetes scheduling
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#intro">
+    Intro
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workflow">
+    Workflow
+  </a>
+<nav aria-label="Workflow" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scheduling-cycle-binding-cycle">
+    Scheduling Cycle &amp; Binding Cycle.
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extension-points">
+    Extension Points
+  </a>
+<nav aria-label="Extension Points" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scheduling-cycle">
+    Scheduling Cycle
+  </a>
+<nav aria-label="Scheduling Cycle" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#queuesort">
+    QueueSort
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prefilter">
+    PreFilter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filter">
+    Filter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post-filter">
+    Post Filter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-score">
+    Pre Score
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#score">
+    Score
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#normalizescore">
+    NormalizeScore
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reserve">
+    Reserve
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#permit">
+    Permit
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#binding-cycle">
+    Binding Cycle
+  </a>
+<nav aria-label="Binding Cycle" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prebind">
+    PreBind
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bind">
+    Bind
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postbind">
+    PostBind
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#links">
+    Links
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1>Kubernetes Scheduling Framework</h1>
+<h2 id="kubernetes-scheduling-framework">Kubernetes Scheduling Framework<a class="headerlink" href="#kubernetes-scheduling-framework" title="Permanent link">¶</a></h2>
+<h3 id="kubernetes-scheduling">kubernetes scheduling<a class="headerlink" href="#kubernetes-scheduling" title="Permanent link">¶</a></h3>
+<h3 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">¶</a></h3>
+<p>Basicamente añade una manera de extender el Scheduler. <br/>
+Los plugins se compilan con el Scheduler y le proveen de API adicional.<br/>
+De esta manera el core del scheduler no cambia pero se pueden añadir nuevas funcionalidades.</p>
+<h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h3>
+<p>El Framework define una serie de puntos donde los plugins pueden registrarse para ser llamados.</p>
+<p>Los plugins pueden cambiar las decisiones del scheduler o bien simplemente ampliar la información disponible.</p>
+<p>Todo intento de hacer scheduling de un nodo tiene dos fases diferenciadas:</p>
+<ul>
+<li>Scheduling Cycle</li>
+<li>Binding Cycle</li>
+</ul>
+<p>A esto se le llama <strong>scheduling context</strong></p>
+<p><img alt="Kubernetes Scheduling Framework Extension Points.png" src="../../../Kubernetes%20Scheduling%20Framework%20Extension%20Points.png" title="Kubernetes Scheduling Framework Extension Points.png"/></p>
+<h4 id="scheduling-cycle-binding-cycle">Scheduling Cycle &amp; Binding Cycle.<a class="headerlink" href="#scheduling-cycle-binding-cycle" title="Permanent link">¶</a></h4>
+<ul>
+<li>Scheduling Cycle</li>
+<li>Es el proceso de elegir un <a href="../../../Kubernetes%20Node" title="nodo">nodo</a> a un <a href="../../../Kubernetes%20Pod" title="Pod">Pod</a></li>
+<li>Se ejecuta en serie ( es decir hasta que no terminamos un pod no empezamos con el siguiente)</li>
+<li>Es alimentado por <strong>una cola ordenada de pods</strong> esperando ser asignados a un nodo.</li>
+<li>Binding Cycle</li>
+<li>Es donde se aplica la decision anterior al cluster</li>
+<li>Se pueden ejecutar en paralelo.</li>
+</ul>
+<h4 id="extension-points">Extension Points<a class="headerlink" href="#extension-points" title="Permanent link">¶</a></h4>
+<ul>
+<li><a href="./#scheduling-cycle" title="Scheduling Cycle">Scheduling Cycle</a></li>
+<li><a href="./#queuesort" title="QueueSort">QueueSort</a></li>
+<li><a href="./#prefilter" title="PreFilter">PreFilter</a></li>
+<li><a href="./#filter" title="Filter">Filter</a></li>
+<li><a href="./#post-filter" title="Post Filter">Post Filter</a></li>
+<li><a href="./#pre-score" title="Pre Score">Pre Score</a></li>
+<li><a href="./#score" title="Score">Score</a></li>
+<li><a href="./#normalizescore" title="NormalizeScore">NormalizeScore</a></li>
+<li><a href="./#reserve" title="Reserve">Reserve</a></li>
+<li><a href="./#permit" title="Permit">Permit</a></li>
+<li><a href="./#binding-cycle" title="Binding Cycle">Binding Cycle</a></li>
+<li><a href="./#prebind" title="PreBind">PreBind</a></li>
+<li><a href="./#bind" title="Bind">Bind</a></li>
+<li><a href="./#postbind" title="PostBind">PostBind</a></li>
+</ul>
+<h5 id="scheduling-cycle">Scheduling Cycle<a class="headerlink" href="#scheduling-cycle" title="Permanent link">¶</a></h5>
+<h6 id="queuesort">QueueSort<a class="headerlink" href="#queuesort" title="Permanent link">¶</a></h6>
+<ul>
+<li>Ordenan los Pods en la cola de espera</li>
+<li>Solo puede haber un plugin de este tipo activo al mismo tiempo</li>
+</ul>
+<h6 id="prefilter">PreFilter<a class="headerlink" href="#prefilter" title="Permanent link">¶</a></h6>
+<ul>
+<li>Comprueban cierta informacion sobre el Pod y condiciones que tanto el pod como el cluster tienen que cumplir.</li>
+<li>Si uno de los PreFilter Plugins retorna error se aborta el Scheduling Cycle.</li>
+</ul>
+<h6 id="filter">Filter<a class="headerlink" href="#filter" title="Permanent link">¶</a></h6>
+<ul>
+<li>Se usa para Filtrar los Nodos que <strong>NO</strong> pueden ejecutar el pod.</li>
+<li>Para cada nodo se ejecutan todos los plugins en el orden configurado</li>
+<li>Si un filtro marca un nodo como no válido no se ejecutan los demas en dicho nodo </li>
+<li>Es decir si ya sabemos que un nodo no es valido no tiene sentido continuar</li>
+<li>Los nodos pueden ser evaluados de manera <strong>concurrente</strong></li>
+</ul>
+<h6 id="post-filter">Post Filter<a class="headerlink" href="#post-filter" title="Permanent link">¶</a></h6>
+<ul>
+<li>Estos plugins se llaman despues de la fase de “Filter” pero <strong>solo cuando ningun nodo ha pasado el filtrado</strong> ( es decir que no tenemos ningún nodo válido para poder meter el pod.)</li>
+<li>Aqui sería el momento de eliminar pods de un nodo para hacer sitio al nuevo de ser necesario. –&gt; <a href="../../../Kubernetes%20scheduler%20Pod%20Priority%20and%20Preemption" title="Kubernetes scheduler Pod Priority and Preemption">Kubernetes scheduler Pod Priority and Preemption</a></li>
+<li>Se llama a todos los plugins en el orden configurado.</li>
+<li>Si cualquier plugin marca un nodo como <code>Schedulable</code> (valido) el resto de plugins no se llaman.</li>
+<li>Supongo que, una vez encuentra uno donde encajar el pod no sigue porque se supone que estas buscando el “menos malo”</li>
+</ul>
+<h6 id="pre-score">Pre Score<a class="headerlink" href="#pre-score" title="Permanent link">¶</a></h6>
+<ul>
+<li>Sirven para hacer un pre-score de los pods, y luego poder compartir esa informacion con el resto de los plugins de Score.</li>
+<li>Si uno de estos plugins retorna un error se aborta el Scheduling Cycle</li>
+</ul>
+<h6 id="score">Score<a class="headerlink" href="#score" title="Permanent link">¶</a></h6>
+<ul>
+<li>Se utiliza para dar una puntuacion ( scoring) a todos los nodos que han pasado el filtro.</li>
+<li>Se llama a cada uno de los plugins de score para cada uno de los nodos.</li>
+<li>Hay un rango definido de enteros para representar el score de un nodo.</li>
+<li>Despues de la fase de Normalizacion el scheduler <strong>combinará la puntuacion de todos los plugins para un nodo segun el peso que cada plugin tenga configurado</strong></li>
+</ul>
+<h6 id="normalizescore">NormalizeScore<a class="headerlink" href="#normalizescore" title="Permanent link">¶</a></h6>
+<ul>
+<li>Sirven para adaptar la puntuacion dada por un Score plugin al intervalo definido.</li>
+<li>Un plugin que se registra para esta extension <strong>solo será llamado con la información que el mismo generó en la fase de Score</strong></li>
+<li>Esto se llama una vez por plugin y por scheduling cycle.</li>
+<li>Si un plugin de estos retorna un error se aborta el Scheduling cycle.</li>
+</ul>
+<h6 id="reserve">Reserve<a class="headerlink" href="#reserve" title="Permanent link">¶</a></h6>
+<ul>
+<li>Los plugins que se registren aqui tienen que tener dos metodos <code>Reserve</code> &amp; <code>Unreserve</code>.</li>
+<li>Esto se llama antes de que empiece la fase de Binding para evitar condiciones de carrera.</li>
+<li>Basicamente se les da la oportunidad a los plugins de “reservar” ciertos recursos de un nodo para que no sean tenidos en cuenta en los subsiguientes Scheduling cycles aun cuando no se ha producido realmente el binding, para evitar que haya varios Pods luchando por los mismos recursos.</li>
+<li>El metodo <code>Reserve</code> puede fallar. Si un plugin falla no se llama al resto de los plugins y se considera que la fase ha fallado, abortando el Scheduling cycle.</li>
+<li><code>Unreserve</code> se llama si falla la fase de Reserva en un plugin posterior o si falla alguna de las fases posteriores a la de Reserve.</li>
+<li>Cuando esto pasa se llama al <code>Unreserve</code> de <mark>todos</mark> los plugins en el orden inverso al de las llamadas a <code>Reverse</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">La implementacion de los <code>Unreserve</code> tiene que ser <mark>idempotente</mark> y no puede fallar.</p>
+</div>
+<h6 id="permit">Permit<a class="headerlink" href="#permit" title="Permanent link">¶</a></h6>
+<ul>
+<li>Es el ultimo punto de ejecucion en el Scheduling Cycle. </li>
+<li>Permite denegar un scheduling o retrasarlo.</li>
+<li>Un permit plugin puede hacer una de las <strong>tres</strong> siguientes cosas:</li>
+<li><strong>approve</strong>: Se envía al  Binding Cycle inmediatamente.</li>
+<li><strong>deny</strong>: Se cancela el Binding y se envia el pod de nuevo a la cola de espera para Scheduling.</li>
+<li><strong>wait</strong> (with timeout) :  <ul>
+<li>Envía el pod a una cola de <strong>waiting</strong>.</li>
+<li>El Binding Cycle del pod comienza pero <strong>queda inmediatamente bloqueado hasta ser aprovado</strong></li>
+<li>Si ningún plugin lo aprueba antes de que pase el timeout el <code>wait</code> se convierte en <code>deny</code> y el Pod se devuelve a la cola de espera para el Scheduling.</li>
+</ul>
+</li>
+</ul>
+<h5 id="binding-cycle">Binding Cycle<a class="headerlink" href="#binding-cycle" title="Permanent link">¶</a></h5>
+<h6 id="prebind">PreBind<a class="headerlink" href="#prebind" title="Permanent link">¶</a></h6>
+<ul>
+<li>Aqui se debe hacer cualquier trabajo preliminar antes de permitir que el pod se ejecute en el nodo</li>
+<li>Ej: Montar un volumen de red</li>
+<li>Si cualquiera de los plugins retorna un error el pod es <code>rejected</code> y enviado a la cola de Scheduling</li>
+</ul>
+<h6 id="bind">Bind<a class="headerlink" href="#bind" title="Permanent link">¶</a></h6>
+<ul>
+<li>Se encargan de hacer el bind de un pod a un nodo ( no tengo ni idea de que implica esto ahora mismo.)</li>
+<li>Se llama a cada plugin en el orden configurado</li>
+<li>No son llamados hasta que no han terminado los de PreBinding</li>
+<li>Un plugin puede elegir si maneja o no un determinado Pod.</li>
+<li>En el caso de que un plugin elija manejarlo <strong>no se sigue llamando a los demas para ese pod</strong></li>
+</ul>
+<h6 id="postbind">PostBind<a class="headerlink" href="#postbind" title="Permanent link">¶</a></h6>
+<ul>
+<li>Esto es basicamente para informar de que el proceso ha terminado</li>
+<li>Puede utilizarse para hacer limpieza de recursos utilizados en el proceso.</li>
+</ul>
+<h3 id="links">Links<a class="headerlink" href="#links" title="Permanent link">¶</a></h3>
+<p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/">official k8s doc</a></p>
+<!-- taken from 
+https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-file.html -->
+<hr/>
+<div class="md-source-file">
+<small>
+<!-- mkdocs-git-revision-date-localized-plugin -->
+<u>Last update</u> :
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 7, 2022</span>
+<!-- mkdocs-git-revision-date-plugin -->
+</small>
+</div>
+<!-- Giscus -->
+<h2 id="__comments">Comments</h2>
+<script async="" crossorigin="anonymous" data-category="..." data-category-id="..." data-emit-metadata="1" data-lang="en" data-mapping="pathname" data-reactions-enabled="1" data-repo="&lt;username&gt;/&lt;repository&gt;" data-repo-id="..." data-theme="light" src="https://giscus.app/client.js">
+</script>
+<!--- generate the script using https://giscus.app/ and replace the text above ! --->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
+
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+<!-- Giscus -->
+<h2 id="__comments">Comments</h2>
+<script async="" crossorigin="anonymous" data-category="..." data-category-id="..." data-emit-metadata="1" data-lang="en" data-mapping="pathname" data-reactions-enabled="1" data-repo="&lt;username&gt;/&lt;repository&gt;" data-repo-id="..." data-theme="light" src="https://giscus.app/client.js">
+</script>
+<!--- generate the script using https://giscus.app/ and replace the text above ! --->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
+
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Arquitectura de Kubernetes" class="md-footer__link md-footer__link--prev" href="../../architecture/k8s/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Arquitectura de Kubernetes
+            </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+<script src="../../../../assets/js/mathjax.js"></script>
+<script src="../../../../assets/js/utils.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../../../assets/js/tooltipster.bundle.js"></script>
+</body>
+</html>
