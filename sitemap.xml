@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/Kubernetes%20scheduler%20Pod%20Priority%20and%20Preemption/</loc>
+         <lastmod>2022-11-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/k8s%20scheduling%20framework/</loc>
          <lastmod>2022-11-07</lastmod>
          <changefreq>daily</changefreq>
