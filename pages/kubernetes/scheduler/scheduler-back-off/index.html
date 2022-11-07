@@ -9,7 +9,7 @@
 <link href="https://jlojosnegros.github.io/obsidian-mkdocs-publisher-template/pages/kubernetes/scheduler/scheduler-back-off/" rel="canonical"/>
 <link href="../../../../assets/meta/favicons.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.7" name="generator"/>
-<title>Scheduler back off - your_site_name</title>
+<title>Kubernetes scheduler back-off - your_site_name</title>
 <link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -30,8 +30,8 @@
 <link href="https://unpkg.com/tippy.js@6/animations/scale-subtle.css" rel="stylesheet">
 <link href="https://unpkg.com/tippy.js@6/themes/translucent.css" rel="stylesheet">
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet">
-<meta content="Scheduler back off" property="og:title"/>
-<meta content="Scheduler back off" name="twitter:title"/>
+<meta content="Kubernetes scheduler back-off" property="og:title"/>
+<meta content="Kubernetes scheduler back-off" name="twitter:title"/>
 <meta content="Esto es que si no hay recursos para poder meterlo en otro nodo se devuelve a la cola para poder intentarlo despues de un rato a ver si hay mas suerte. Estos reintentos cada vez se hacen con una menor frecuencia y entre medias es posible que otro pod de menor prioridad pero que necesita menos recursos pueda ser asignado a un nodo, con lo que se puede dar una especie de “inversion de prioridad”" name="description"/>
 <meta content="Esto es que si no hay recursos para poder meterlo en otro nodo se devuelve a la cola para poder intentarlo despues de un rato a ver si hay mas suerte. Estos reintentos cada vez se hacen con una menor frecuencia y entre medias es posible que otro pod de menor prioridad pero que necesita menos recursos pueda ser asignado a un nodo, con lo que se puede dar una especie de “inversion de prioridad”" name="twitter:description"/>
 <meta content="summary_large_image" name="twitter:card"/>
@@ -68,7 +68,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Scheduler back off
+              Kubernetes scheduler back-off
             
           </span>
 </div>
@@ -236,11 +236,11 @@
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Scheduler back off
+          Kubernetes scheduler back-off
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Scheduler back off
+        Kubernetes scheduler back-off
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -275,7 +275,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../priorityclass/non-preempting-priority-class/">
-        Non-preemptive PriorityClass
+        Kubernetes Non-preemptive PriorityClass
       </a>
 </li>
 </ul>
@@ -316,7 +316,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Scheduler back off</h1>
+<h1>Kubernetes scheduler back-off</h1>
 <p>Esto es que si no hay recursos para poder meterlo en otro nodo se devuelve a la cola para poder intentarlo despues de un rato a ver si hay mas suerte. Estos reintentos cada vez se hacen con una menor frecuencia y entre medias es posible que otro pod de menor prioridad pero que necesita menos recursos pueda ser asignado a un nodo, con lo que se puede dar una especie de “inversion de prioridad”</p>
 <h3 id="kubernetes-scheduling">kubernetes scheduling<a class="headerlink" href="#kubernetes-scheduling" title="Permanent link">¶</a></h3>
 <!-- taken from 
